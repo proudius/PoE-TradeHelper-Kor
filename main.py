@@ -35,12 +35,15 @@ def findTradeInfo(clipboard):
     
     itemid = response.json()['id']
     list = response.json()['result']
+    print( "total:" + str(response.json()['total'] ))
     url='https://poe.game.daum.net/api/trade/fetch/'
     maxCount = 10
-    for id in list[0:maxCount]:
-        url = url + id + ','
+    step = int(len(list)/maxCount) + 1
+    for i in range(0,len(list),step):
+        url = url + list[i] + ','
     url = url[:-1]
     url = url + '?query=' + itemid
+    
     result = requests.get(url)
     if result.status_code != 200:
         print( 'get error ' + str(response.status_code))
