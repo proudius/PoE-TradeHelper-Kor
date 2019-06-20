@@ -26,7 +26,7 @@ def findTradeInfo(clipboard):
         return None
     print('finding ' + itemtype)
     headers = {'Content-Type': 'application/json'}
-    payload = {"query":{"status":{"option":"online"},"name": name,"type":itemtype ,"stats":[{"type":"and","filters":[]}]},"sort":{"price":"desc"}}
+    payload = {"query":{"status":{"option":"online"},"name": name,"type":itemtype ,"stats":[{"type":"and","filters":[]}]},"filters":{"trade_filters":{"filters":{"indexed":{"option":"1day"}},"disabled":False}},"sort":{"price":"desc"}}    
     url = "https://poe.game.daum.net/api/trade/search/Legion"    
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     if response.status_code != 200:
