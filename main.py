@@ -57,7 +57,8 @@ def findTradeInfo(clipboard):
 def mainLoop():
     #TODO clipboard event hook 사용하게 바꿔야 한다.
     print('Press Ctrl+C in POE client')
-    recent_value = pyperclip.paste()
+    pyperclip.copy('')
+    recent_value = ''
     while True:
         clipboard = pyperclip.paste()
         if clipboard != recent_value:
