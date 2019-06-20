@@ -27,9 +27,9 @@ def findTradeInfo(clipboard):
     print('finding ' + itemtype)
     headers = {'Content-Type': 'application/json'}
     if name != None:
-        payload = {"query":{"status":{"option":"online"},"name": name,"type":itemtype ,"stats":[{"type":"and","filters":[]}]},"filters":{"trade_filters":{"filters":{"indexed":{"option":"1day"}},"disabled":False}},"sort":{"price":"desc"}}
+        payload = {"query":{"status":{"option":"online"},"name": name,"type":itemtype ,"stats":[{"type":"and","filters":[]}]},"filters":{"trade_filters":{"filters":{"indexed":{"option":"1day"}},"disabled":False}},"sort":{"price":"asc"}}
     else:
-        payload = {"query":{"status":{"option":"online"},"type":itemtype ,"stats":[{"type":"and","filters":[]}]},"filters":{"trade_filters":{"filters":{"indexed":{"option":"1day"}},"disabled":False}},"sort":{"price":"desc"}}
+        payload = {"query":{"status":{"option":"online"},"type":itemtype ,"stats":[{"type":"and","filters":[]}]},"filters":{"trade_filters":{"filters":{"indexed":{"option":"1day"}},"disabled":False}},"sort":{"price":"asc"}}
     url = "https://poe.game.daum.net/api/trade/search/Legion"    
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     if response.status_code != 200:
